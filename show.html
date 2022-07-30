@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+</head>
+
+<body>
+    <h1 id="time">
+        Time here
+    </h1>
+    <script>
+        setInterval(() => {
+            fetch('http://worldtimeapi.org/api/timezone/Asia/Kolkata').then(response => {
+                response.json().then(data => {
+                    console.log(data);
+                    let longtime = data.datetime.toString()
+                    let shorttime = longtime.substring(longtime.indexOf('T')+1,longtime.lastIndexOf('.'))
+                    document.getElementById('time').innerText = shorttime
+                })
+            })
+        },1000)
+
+    </script>
+</body>
+
+</html>
